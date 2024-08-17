@@ -1,20 +1,19 @@
 package org.example;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.MapperConfig;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
-import org.mapstruct.Named;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 
 @Mapper
+//@MapperConfig(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.SET_TO_NULL)
 public abstract class EmployeeMapper extends BaseMapper {
 
     @Mappings({
-        @Mapping(source="gender", target="gender", conditionQualifiedByName="isStringNotNullOrEmpty", qualifiedByName="toGender")})
-    public abstract Target transformSource(Source employee);
+        @Mapping(source="gender", target="gender", conditionQualifiedByName="isStringNotNullOrEmpty", qualifiedByName="toGender"),
+        @Mapping(source="contact.emailAddresses.primaryEmailAddress", target="email", defaultValue = "sa")})
 
-    @Named( "toGender" )
-    public String toGender(String gender) {
-        return gender.toUpperCase();
-    }
+    public abstract Target transformSource(Source employee);
 
 }

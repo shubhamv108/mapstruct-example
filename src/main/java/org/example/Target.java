@@ -15,6 +15,11 @@ public class Target {
             return this;
         }
 
+        public Builder email(String email) {
+            this.target.email = email;
+            return this;
+        }
+
 
         public Target build() {
             return target;
@@ -23,6 +28,7 @@ public class Target {
     }
 
     private String gender;
+    private String email;
 
     public static Target.Builder newBuilder() {
         return new Builder();
@@ -30,6 +36,9 @@ public class Target {
 
     public String getGender() {
         return gender;
+    }
+    public String getEmail() {
+        return email;
     }
 
 }

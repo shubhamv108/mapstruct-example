@@ -3,7 +3,7 @@ package org.example;
 public class Source {
 
     private String gender;
-
+    private Contact contact;
 
     public Source(String gender) {
         this.gender = gender;
@@ -20,4 +20,11 @@ public class Source {
         this.gender = gender;
     }
 
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
+    }
 }
